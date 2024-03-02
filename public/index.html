@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Gerador de links para whatsapp">
+        <meta name="keywords" content="wpp, whatsapp, Gerador ">
+        <title>Gerar link wpp</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script src="https://cdn.jsdelivr.net/npm/imask"></script>
+        <script src="script.js"></script>
+        <style>
+            .bgWpp{
+                background-image: url("bg-wpp.png");
+                object-position: center;
+                object-fit: cover;
+            }
+        </style>
+    </head>
+    <body class="w-full flex flex-col gap-4 max-w-7xl mx-auto">
+        <header class="w-full p-4  border-b-2 border-gray-200">
+            <span class="font-bold uppercase" translate="no">Wpp generator </span>
+        </header>
+        <div class="w-full flex flex-col sm:flex-row">
+            <section class="w-full p-6 flex flex-col gap-4">
+                <h1 class="text-2xl">
+                    Gerador de Links para WhatsApp
+                </h1>
+                <p>Utilize nossa ferramenta para gerar links de forma rápida e simples para o WhatsApp.</p>
+                <div class="mt-8">
+
+                    <form class="flex flex-col gap-4" id="myForm" method="post" >
+                        <div class="grid grid-cols-3 gap-4">
+                            <label class="cursor-pointer col-start-1 col-end-3 flex rounded gap-4 bg-gray-300 h-12 items-center p-4 focus-within:border-gray-500   focus-within:border-2">
+                                +55
+                                <input autocomplete={false} name="number" required="required" pattern="[0-9]+$" id="number" maxlength=11 minlength=11
+                                class="focus:bg-transparent bg-transparent border-hidden outline-none focus:outline-none" type="tel" placeholder="Digite seu número:"/>
+                            </label>
+                            <button type="submit" 
+                            class="bg-green-500 rounded text-white font-semibold hover:bg-green-600 duration-300">Gerar</button>
+                        </div>
+                        <textarea  placeholder="Digite a mensagem (opcional)..." id="text"
+                        class="bg-gray-300 resize-none rounded h-72 outline-gray-500 p-2 cursor-pointer"></textarea>
+                    </form>    
+                </div>
+            </section>
+            <section id="sectionPreview"
+            class="w-full p-6 flex flex-col gap-4">
+                <h2 class="text-xl">Visualização prévia</h2>
+                <p>Veja o resultado final</p>
+                <div class="bgWpp w-full flex flex-col gap-64">
+                    <div class="border-b-2 border-neutral-800 py-2 px-4 flex items-center gap-4 bg-neutral-700 w-full">
+                        <span class="bg-white block  h-12 w-12 rounded-full"></span>
+                        <span id="numberPreview"
+                        class="text-white font-semibold"></span>
+                    </div>
+                    <div class="w-full flex flex-col items-end">
+                        <div id="textPreview"
+                        class="bg-green-800 hidden w-10/12 rounded text-white p-2 mb-8 mr-2">
+                        </div>
+                        <div class="border-t-2 border-neutral-800 py-2 px-4 flex items-center gap-4 bg-neutral-700 w-full">
+                            <span class="py-2 px-4 text-gray-400">Type a message</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <section class="w-full p-6 flex flex-col gap-4">
+            <article id="linkArea" 
+            class="hidden grid grid-cols-3 bg-neutral-700 py-2 px-4 rounded gap-2">
+                <a id="link" 
+                class="col-start-1 text-ellipsis	 col-end-3 bg-neutral-800/20 p-2 text-white rounded">
+                </a>
+                <button id="copyButton"
+                class="flex items-center justify-end text-white hover:bg-neutral-800/20 py-2 px-4 duration-300 rounded">
+                    Copiar
+                </button>
+            </article>
+            <div class="hidden" id="qrCodeAREA">
+                <iframe id="qrcode" src="" width="250" height="250"></iframe>
+            </div>
+        </section>
+    </body>
+</html>
+
+
+
